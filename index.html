@@ -10,7 +10,7 @@
 /* Layout: one ruled table, filters above it. Black on white, a single accent, square edges throughout. */
 :root{
   --bg:#ffffff; --fg:#000000; --muted:#555555; --rule:#000000; --hair:#d9d9d9;
-  --accent:#e4002b; --accent-ink:#ffffff;
+  --accent:#e4002b; --accent-ink:#ffffff; --ahead:#f2f2f2;
   --sans:"Public Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
   color-scheme:light;
@@ -46,7 +46,8 @@ th button:hover{color:var(--fg)}
 th button[data-dir]::after{content:" ↑";color:var(--fg)}
 th button[data-dir="desc"]::after{content:" ↓"}
 tbody td{border-bottom:1px solid var(--hair);padding:12px;vertical-align:top}
-tbody tr:hover td{background:#fafafa}
+tbody tr.ahead td{background:var(--ahead)}
+tbody tr:hover td{background:#ececec}
 .c-when{width:170px;font-family:var(--mono);font-size:13px;line-height:1.4}
 .c-when .lane{display:block;margin-top:4px;font-family:var(--sans);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .c-ev{min-width:0}
@@ -75,7 +76,9 @@ footer{margin-top:20px;color:var(--muted);font-size:13px}
 @media (max-width:760px){
   thead{display:none}
   table,tbody,tr,td{display:block;width:auto}
-  tbody tr{border-bottom:1px solid var(--rule);padding:12px 0}
+  tbody tr{border-bottom:1px solid var(--rule);padding:12px 8px}
+  tbody tr.ahead{background:var(--ahead)}
+  tbody tr.ahead td{background:none}
   tbody td{border:0;padding:2px 0}
   .c-when,.c-tags,.c-urg,.c-link{width:auto}
   .c-when{display:flex;gap:10px;align-items:baseline}
@@ -146,12 +149,18 @@ function live(){const t=todayISO();return events.filter(e=>!(e.end||e.start)||(e
 function inLane(e){return state.lane==="all"||e.category===state.lane}
 function hasTags(e){if(!state.tags.size)return true;const ts=e.tags||[];for(const t of state.tags)if(!ts.includes(t))return false;return true}
 
+function startMin(e){
+  const w=(e.whenText||"").split("·")[1]||"";
+  const m=w.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)?/i);if(!m)return 9999;
+  const ap=(m[3]||(w.match(/AM|PM/i)||[""])[0]).toUpperCase();
+  let h=+m[1]%12;if(ap==="PM")h+=12;return h*60+(+m[2]||0);
+}
 function cmp(a,b){
   const {key,dir}=state.sort,s=dir==="asc"?1:-1;
   let r=0;
   if(key==="title")r=a.title.localeCompare(b.title);
   else if(key==="urg")r=(a.category==="book_ahead"?(URG_ORDER[a.urgency]??8):9)-(b.category==="book_ahead"?(URG_ORDER[b.urgency]??8):9);
-  if(r===0||key==="when")r=r||((a.start||"9999").localeCompare(b.start||"9999"));
+  if(r===0||key==="when")r=r||((a.start||"9999").localeCompare(b.start||"9999"))||(startMin(a)-startMin(b));
   return r*s||a.title.localeCompare(b.title);
 }
 
@@ -177,7 +186,7 @@ function render(){
   document.getElementById("count").textContent=list.length+(list.length===1?" event":" events");
   if(!list.length){const tr=el("tr","empty"),td=el("td",null,state.tags.size?"No events match those tags. Clear a tag to see more.":"No events listed yet.");td.colSpan=5;tr.append(td);tb.append(tr);return}
   for(const e of list){
-    const tr=el("tr");
+    const tr=el("tr",e.category==="book_ahead"?"ahead":null);
     const w=el("td","c-when",whenText(e));w.append(el("span","lane",e.category==="book_ahead"?"Book ahead":"Next few days"));
     const ev=el("td","c-ev");const t=el("div","t",e.title);if(e.isNew)t.append(el("span","new","NEW"));
     ev.append(t,el("div","where",[e.venue,e.area].filter(Boolean).join(" · ")));
@@ -195,7 +204,7 @@ function render(){
 document.querySelectorAll("[data-lane]").forEach(b=>b.onclick=()=>{
   state.lane=b.dataset.lane;
   document.querySelectorAll("[data-lane]").forEach(x=>x.setAttribute("aria-pressed",x===b));
-  if(state.lane==="book_ahead"&&state.sort.key==="when")setSort("urg","asc");else render();
+  render();
 });
 function setSort(key,dir){
   state.sort={key,dir};
