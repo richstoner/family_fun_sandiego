@@ -5,134 +5,213 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>SD Toddler Outings</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: a two-lane board — "Book ahead" ranked by urgency, "Next few days" by date — like a harbor tide table for weekends. */
+/* Layout: one ruled table, filters above it. Black on white, a single accent, square edges throughout. */
 :root{
-  --bg:#f3f6f5; --surface:#ffffff; --fg:#14211f; --muted:#5b6b68; --line:#d6e0dd;
-  --kelp:#1f5c4f; --kelp-soft:#dcebe6; --sun:#e8a317; --sun-soft:#fbefd2;
-  --now:#c2410c; --now-soft:#fde4d6; --watch:#6b6f86; --watch-soft:#e7e8ef;
-  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
-  --body:"Atkinson Hyperlegible",ui-sans-serif,system-ui,sans-serif;
+  --bg:#ffffff; --fg:#000000; --muted:#555555; --rule:#000000; --hair:#d9d9d9;
+  --accent:#e4002b; --accent-ink:#ffffff;
+  --sans:"Public Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0f1716; --surface:#16211f; --fg:#e6efec; --muted:#93a5a1; --line:#2a3a37;
-  --kelp:#7cc7b3; --kelp-soft:#1d3530; --sun:#f2bd4b; --sun-soft:#3a2f14;
-  --now:#ff8a5c; --now-soft:#3d2216; --watch:#a9adc4; --watch-soft:#25273a; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0f1716; --surface:#16211f; --fg:#e6efec; --muted:#93a5a1; --line:#2a3a37;
-  --kelp:#7cc7b3; --kelp-soft:#1d3530; --sun:#f2bd4b; --sun-soft:#3a2f14;
-  --now:#ff8a5c; --now-soft:#3d2216; --watch:#a9adc4; --watch-soft:#25273a; color-scheme:dark}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
-.wrap{max-width:1180px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:24px}
-header{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-.01em}
-h1 span{color:var(--kelp)}
-.sub{color:var(--muted);margin:6px 0 0}
-.stamp{font-size:13px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
-.lanes{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-@media (max-width:820px){.lanes{grid-template-columns:1fr}}
-.lane{min-width:0;display:grid;gap:12px}
-.lane h2{font-family:var(--display);font-weight:700;font-size:20px;margin:0;display:flex;align-items:baseline;gap:10px}
-.lane h2 small{font-family:var(--body);font-weight:400;font-size:13px;color:var(--muted)}
-.lane-head{border-bottom:2px solid var(--fg);padding-bottom:6px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:8px;min-width:0}
-.card.is-new{border-color:var(--kelp)}
-.top{display:flex;gap:12px;align-items:start;justify-content:space-between}
-.when{font-variant-numeric:tabular-nums;font-size:13px;font-weight:700;color:var(--kelp);text-transform:uppercase;letter-spacing:.04em}
-.card h3{font-family:var(--display);font-weight:500;font-size:18px;line-height:1.2;margin:2px 0 0;text-wrap:balance}
-.where{color:var(--muted);font-size:14px}
-.fit{margin:0}
-.note{margin:0;font-size:13px;color:var(--muted)}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:12px;padding:2px 8px;border-radius:999px;background:var(--kelp-soft);color:var(--fg);white-space:nowrap}
-.urg{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap}
-.urg.now{background:var(--now-soft);color:var(--now)}
-.urg.soon{background:var(--sun-soft);color:var(--fg)}
-.urg.plan{background:var(--kelp-soft);color:var(--kelp)}
-.urg.watch{background:var(--watch-soft);color:var(--watch)}
-.urg.new{background:var(--kelp);color:var(--surface)}
-.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.actions a{color:var(--kelp);font-weight:700;text-decoration:none}
-.actions a:hover{text-decoration:underline}
-button{font:inherit;font-size:13px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--fg);cursor:pointer}
-button:hover{border-color:var(--kelp)}
-button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
-button.primary{background:var(--kelp);border-color:var(--kelp);color:var(--surface)}
-.spacer{flex:1}
-.empty{border:1px dashed var(--line);border-radius:10px;padding:18px;color:var(--muted)}
-details.done{border-top:1px solid var(--line);padding-top:12px}
-details.done summary{cursor:pointer;color:var(--muted);font-size:14px}
-.done-row{display:flex;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
-.done-row span.t{flex:1;min-width:0}
-.banner{background:var(--sun-soft);border-radius:8px;padding:10px 14px;font-size:14px}
-@media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s}}
+*{box-sizing:border-box;border-radius:0}
+html,body{background:var(--bg);color:var(--fg)}
+body{margin:0;font-family:var(--sans);font-size:15px;line-height:1.45}
+.wrap{max-width:1240px;margin:0 auto;padding-block:32px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;border-bottom:3px solid var(--rule);padding-bottom:12px}
+h1{margin:0;font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;line-height:1}
+h1 span{color:var(--accent)}
+.sub{margin:8px 0 0;color:var(--muted);max-width:62ch}
+.stamp{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right}
+
+.controls{display:grid;gap:10px;padding-block:16px;border-bottom:1px solid var(--rule)}
+.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.row .lbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);width:72px;flex:none}
+.f{font:inherit;font-size:13px;padding:4px 10px;border:1px solid var(--fg);background:var(--bg);color:var(--fg);cursor:pointer;line-height:1.3}
+.f:hover{background:#f2f2f2}
+.f[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.f .n{font-family:var(--mono);font-size:11px;opacity:.65;margin-left:4px}
+.f.clear{border-color:transparent;text-decoration:underline;color:var(--muted)}
+.f.clear:hover{background:none;color:var(--fg)}
+.f:focus-visible,th button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.count{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto}
+
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+thead th{position:sticky;top:0;background:var(--bg);text-align:left;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule);padding:10px 12px 8px;white-space:nowrap}
+th button{all:unset;cursor:pointer}
+th button:hover{color:var(--fg)}
+th button[data-dir]::after{content:" ↑";color:var(--fg)}
+th button[data-dir="desc"]::after{content:" ↓"}
+tbody td{border-bottom:1px solid var(--hair);padding:12px;vertical-align:top}
+tbody tr:hover td{background:#fafafa}
+.c-when{width:170px;font-family:var(--mono);font-size:13px;line-height:1.4}
+.c-when .lane{display:block;margin-top:4px;font-family:var(--sans);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.c-ev{min-width:0}
+.t{font-weight:600;font-size:16px;line-height:1.25}
+.new{display:inline-block;margin-left:6px;padding:1px 5px;font-size:10px;font-weight:800;letter-spacing:.08em;vertical-align:2px;background:var(--accent);color:var(--accent-ink)}
+.where{color:var(--muted);font-size:13px;margin-top:2px}
+.fit{margin:6px 0 0;max-width:68ch}
+.note{margin:4px 0 0;font-size:13px;color:var(--muted);max-width:68ch}
+.c-tags{width:200px}
+.tag{display:inline-block;font-size:12px;border:1px solid var(--hair);padding:1px 6px;margin:0 4px 4px 0;cursor:pointer;background:none;font-family:inherit;color:var(--fg)}
+.tag:hover{border-color:var(--fg)}
+.tag.on{border-color:var(--fg);background:var(--fg);color:var(--bg)}
+.c-urg{width:110px;font-size:13px;white-space:nowrap}
+.urg-now{color:var(--accent);font-weight:800}
+.urg-soon{font-weight:600}
+.urg-plan,.urg-watch{color:var(--muted)}
+.c-link{width:90px;white-space:nowrap}
+.c-link a{color:var(--fg);font-weight:600;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px}
+.c-link a:hover{color:var(--accent)}
+.src{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.empty td{color:var(--muted);padding:28px 12px}
+.banner{border:1px solid var(--accent);color:var(--accent);padding:10px 12px;margin-top:16px}
+footer{margin-top:20px;color:var(--muted);font-size:13px}
+
+/* Phone: each row becomes a block. */
+@media (max-width:760px){
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:auto}
+  tbody tr{border-bottom:1px solid var(--rule);padding:12px 0}
+  tbody td{border:0;padding:2px 0}
+  .c-when,.c-tags,.c-urg,.c-link{width:auto}
+  .c-when{display:flex;gap:10px;align-items:baseline}
+  .c-when .lane{margin:0}
+  .c-tags{margin-top:6px}
+  .c-urg:empty{display:none}
+  .row .lbl{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-
 <div class="wrap">
   <header>
     <div>
       <h1>SD Toddler <span>Outings</span></h1>
-      <p class="sub">Family events around San Diego County, picked for a 3-year-old. Updated each morning; always confirm details with the venue.</p>
+      <p class="sub">Family events around San Diego County, picked for a 3-year-old. Updated each morning. Confirm details with the venue before you go.</p>
     </div>
     <div class="stamp" id="stamp">Loading…</div>
   </header>
-  <div class="banner" id="banner" hidden></div>
-  <div class="lanes">
-    <section class="lane" aria-labelledby="h-book">
-      <div class="lane-head"><h2 id="h-book">Book ahead <small id="c-book"></small></h2></div>
-      <div id="book" class="lane"><div class="empty">Ticketed shows, timed-entry holiday events and on-sale dates will appear here.</div></div>
-    </section>
-    <section class="lane" aria-labelledby="h-soon">
-      <div class="lane-head"><h2 id="h-soon">Next few days <small id="c-soon"></small></h2></div>
-      <div id="soon" class="lane"><div class="empty">Things happening over the next week will appear here.</div></div>
-    </section>
+
+  <div class="controls" aria-label="Filters">
+    <div class="row" role="group" aria-label="Show">
+      <span class="lbl">Show</span>
+      <button class="f" id="lane-all" data-lane="all" aria-pressed="true">All</button>
+      <button class="f" id="lane-book" data-lane="book_ahead" aria-pressed="false">Book ahead</button>
+      <button class="f" id="lane-soon" data-lane="soon" aria-pressed="false">Next few days</button>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="row" role="group" aria-label="Tags" id="tagrow">
+      <span class="lbl">Tags</span>
+    </div>
   </div>
+
+  <div class="banner" id="banner" hidden></div>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col"><button id="sort-when" data-key="when">When</button></th>
+          <th scope="col"><button id="sort-title" data-key="title">Event</button></th>
+          <th scope="col">Tags</th>
+          <th scope="col"><button id="sort-urg" data-key="urg">Booking</button></th>
+          <th scope="col">Link</th>
+        </tr>
+      </thead>
+      <tbody id="rows"><tr class="empty"><td colspan="5">Loading events…</td></tr></tbody>
+    </table>
+  </div>
+
+  <footer>Picked automatically from venue and organizer pages. Dates and prices change; check the linked page before you go.</footer>
 </div>
 
-<footer class="wrap" style="padding-block:0 32px;color:var(--muted);font-size:13px">Curated automatically from venue and organizer pages. Dates and prices change; check the linked page before you go.</footer>
 <script>
 const URG_ORDER={now:0,soon:1,plan:2,watch:3};
 const URG_LABEL={now:"Book now",soon:"Book soon",plan:"Plan ahead",watch:"Watch"};
-let events=[], meta=null;
+const state={lane:"all",tags:new Set(),sort:{key:"when",dir:"asc"}};
+let events=[];
+
 function todayISO(){const d=new Date();return new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)}
-function fmtDate(iso){if(!iso)return "Dates TBA";const d=new Date(iso+"T12:00:00");return d.toLocaleDateString(undefined,{weekday:"short",month:"short",day:"numeric"})}
+function fmtDate(iso){const d=new Date(iso+"T12:00:00");return d.toLocaleDateString(undefined,{weekday:"short",month:"short",day:"numeric"})}
 function whenText(e){if(e.whenText)return e.whenText;if(!e.start)return "Dates TBA";return e.end&&e.end!==e.start?fmtDate(e.start)+" – "+fmtDate(e.end):fmtDate(e.start)}
 function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!=null)n.textContent=text;return n}
-function safeUrl(u){try{const x=new URL(u);return x.protocol==="https:"||x.protocol==="http:"?x.href:null}catch(_){return null}}
-function card(e){
-  const c=el("article","card"+(e.isNew?" is-new":""));
-  const top=el("div","top");const left=el("div");left.style.minWidth="0";
-  left.append(el("div","when",whenText(e)),el("h3",null,e.title),el("div","where",[e.venue,e.area].filter(Boolean).join(" · ")));
-  const badges=el("div","chips");badges.style.justifyContent="flex-end";
-  if(e.isNew)badges.append(el("span","urg new","New"));
-  if(e.category==="book_ahead"&&e.urgency)badges.append(el("span","urg "+e.urgency,URG_LABEL[e.urgency]||e.urgency));
-  top.append(left,badges);c.append(top);
-  if(e.fit)c.append(el("p","fit",e.fit));
-  if(e.onSale)c.append(el("p","note","Tickets: "+e.onSale));
-  if(e.caveat)c.append(el("p","note",e.caveat));
-  if(e.tags&&e.tags.length){const ch=el("div","chips");e.tags.forEach(t=>ch.append(el("span","chip",t)));c.append(ch)}
-  const u=safeUrl(e.url);
-  if(u){const a=el("div","actions");const l=el("a",null,e.category==="book_ahead"?"Tickets & details ↗":"Details ↗");l.href=u;l.target="_blank";l.rel="noopener";a.append(l);if(e.source)a.append(el("span","note",e.source));c.append(a)}
-  return c;
+function safeUrl(u){try{const x=new URL(u);return /^https?:$/.test(x.protocol)?x.href:null}catch(_){return null}}
+
+function live(){const t=todayISO();return events.filter(e=>!(e.end||e.start)||(e.end||e.start)>=t)}
+function inLane(e){return state.lane==="all"||e.category===state.lane}
+function hasTags(e){if(!state.tags.size)return true;const ts=e.tags||[];for(const t of state.tags)if(!ts.includes(t))return false;return true}
+
+function cmp(a,b){
+  const {key,dir}=state.sort,s=dir==="asc"?1:-1;
+  let r=0;
+  if(key==="title")r=a.title.localeCompare(b.title);
+  else if(key==="urg")r=(a.category==="book_ahead"?(URG_ORDER[a.urgency]??8):9)-(b.category==="book_ahead"?(URG_ORDER[b.urgency]??8):9);
+  if(r===0||key==="when")r=r||((a.start||"9999").localeCompare(b.start||"9999"));
+  return r*s||a.title.localeCompare(b.title);
 }
-function fill(id,list,emptyText){const box=document.getElementById(id);box.replaceChildren();if(!list.length){box.append(el("div","empty",emptyText));return}list.forEach(e=>box.append(card(e)))}
+
+function renderTags(){
+  const row=document.getElementById("tagrow");
+  [...row.querySelectorAll(".f")].forEach(n=>n.remove());
+  const pool=live().filter(inLane),counts=new Map();
+  pool.forEach(e=>(e.tags||[]).forEach(t=>counts.set(t,(counts.get(t)||0)+1)));
+  state.tags.forEach(t=>{if(!counts.has(t))counts.set(t,0)});
+  [...counts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).forEach(([t,n])=>{
+    const b=el("button","f");b.id="tag-"+t.toLowerCase().replace(/[^a-z0-9]+/g,"-");
+    b.setAttribute("aria-pressed",state.tags.has(t));b.append(t,el("span","n",String(n)));
+    b.onclick=()=>toggleTag(t);row.append(b);
+  });
+  if(state.tags.size){const c=el("button","f clear","Clear tags");c.id="tag-clear";c.onclick=()=>{state.tags.clear();render()};row.append(c)}
+}
+function toggleTag(t){state.tags.has(t)?state.tags.delete(t):state.tags.add(t);render()}
+
 function render(){
-  const t=todayISO();
-  const live=events.filter(e=>!(e.end||e.start)||(e.end||e.start)>=t);
-  const book=live.filter(e=>e.category==="book_ahead").sort((a,b)=>(URG_ORDER[a.urgency]??9)-(URG_ORDER[b.urgency]??9)||(a.start||"9999").localeCompare(b.start||"9999"));
-  const soon=live.filter(e=>e.category==="soon").sort((a,b)=>(a.start||"").localeCompare(b.start||""));
-  fill("book",book,"Nothing to book right now.");
-  fill("soon",soon,"Nothing listed for the next few days yet.");
-  document.getElementById("c-book").textContent=book.length?book.length+" open":"";
-  document.getElementById("c-soon").textContent=soon.length?soon.length+" events":"";
-  const st=document.getElementById("stamp");
-  if(meta&&meta.lastRun){st.textContent="Updated "+new Date(meta.lastRun).toLocaleString(undefined,{weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})}else st.textContent="";
+  renderTags();
+  const list=live().filter(inLane).filter(hasTags).sort(cmp);
+  const tb=document.getElementById("rows");tb.replaceChildren();
+  document.getElementById("count").textContent=list.length+(list.length===1?" event":" events");
+  if(!list.length){const tr=el("tr","empty"),td=el("td",null,state.tags.size?"No events match those tags. Clear a tag to see more.":"No events listed yet.");td.colSpan=5;tr.append(td);tb.append(tr);return}
+  for(const e of list){
+    const tr=el("tr");
+    const w=el("td","c-when",whenText(e));w.append(el("span","lane",e.category==="book_ahead"?"Book ahead":"Next few days"));
+    const ev=el("td","c-ev");const t=el("div","t",e.title);if(e.isNew)t.append(el("span","new","NEW"));
+    ev.append(t,el("div","where",[e.venue,e.area].filter(Boolean).join(" · ")));
+    if(e.fit)ev.append(el("p","fit",e.fit));
+    if(e.onSale)ev.append(el("p","note","Tickets: "+e.onSale));
+    if(e.caveat)ev.append(el("p","note",e.caveat));
+    const tg=el("td","c-tags");(e.tags||[]).forEach(x=>{const b=el("button","tag"+(state.tags.has(x)?" on":""),x);b.title="Filter by "+x;b.onclick=()=>toggleTag(x);tg.append(b)});
+    const u=el("td","c-urg");if(e.category==="book_ahead"&&e.urgency)u.append(el("span","urg-"+e.urgency,URG_LABEL[e.urgency]||e.urgency));
+    const l=el("td","c-link");const href=safeUrl(e.url);
+    if(href){const a=el("a",null,e.category==="book_ahead"?"Tickets ↗":"Details ↗");a.href=href;a.target="_blank";a.rel="noopener";l.append(a);if(e.source)l.append(el("span","src",e.source))}
+    tr.append(w,ev,tg,u,l);tb.append(tr);
+  }
 }
-fetch("events.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{events=d.events||[];meta=d;render()})
- .catch(()=>{document.getElementById("stamp").textContent="";const b=document.getElementById("banner");b.textContent="The event list couldn't load. Refresh to try again.";b.hidden=false});
+
+document.querySelectorAll("[data-lane]").forEach(b=>b.onclick=()=>{
+  state.lane=b.dataset.lane;
+  document.querySelectorAll("[data-lane]").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  if(state.lane==="book_ahead"&&state.sort.key==="when")setSort("urg","asc");else render();
+});
+function setSort(key,dir){
+  state.sort={key,dir};
+  document.querySelectorAll("th button").forEach(x=>x.dataset.key===key?x.dataset.dir=dir:delete x.dataset.dir);
+  render();
+}
+document.querySelectorAll("th button").forEach(b=>b.onclick=()=>{
+  const k=b.dataset.key;setSort(k,state.sort.key===k&&state.sort.dir==="asc"?"desc":"asc");
+});
+document.getElementById("sort-when").dataset.dir="asc";
+
+fetch("events.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
+  events=d.events||[];
+  if(d.lastRun)document.getElementById("stamp").textContent="Updated "+new Date(d.lastRun).toLocaleString(undefined,{weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});
+  render();
+}).catch(()=>{document.getElementById("stamp").textContent="";document.getElementById("rows").replaceChildren();const b=document.getElementById("banner");b.textContent="The event list couldn't load. Refresh to try again.";b.hidden=false});
 </script>
 </body>
 </html>
