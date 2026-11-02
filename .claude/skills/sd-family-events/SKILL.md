@@ -117,8 +117,17 @@ Run after the database writes, every run. The repo is already cloned if you are 
 
 1. Export the database: ArtifactData `list` on `events` with `query.limit: 500` and `out_dir` set to a fresh scratch directory. The JSON files land in `<out_dir>/events/`.
 2. From the repo root run `python3 -I export.py <out_dir>/events <lastRun ISO> <mode>`, using the same `lastRun` you wrote to `meta/run`. The script drops booked/dismissed and past events, strips private fields (status, firstSeen) and marks this run's new events.
-3. Commit only `events.json`, with message `Update events (<daily sweep|weekly scan>, <YYYY-MM-DD>)` plus the session's attribution trailer lines. `git fetch origin main`, rebase if needed, then `git push origin main`. (`lastRun` changes every run, so there is always a commit; that keeps the page's "Updated" time honest.)
-4. During a scheduled run, never change `index.html`, `export.py`, this file, or other repo files. Never commit anything from the database beyond what `export.py` writes.
+3. Commit and push `events.json` with exactly these commands from the repo root. A fresh session has no git identity, so a plain `git commit` fails; the `-c` flags are required.
+   ```
+   git add events.json
+   git -c user.name="Rich Stoner" -c user.email="stonerri@gmail.com" commit -m "Update events (<daily sweep|weekly scan>, <YYYY-MM-DD>)" -m "<the session's attribution trailer lines>"
+   git fetch origin main
+   git -c user.name="Rich Stoner" -c user.email="stonerri@gmail.com" rebase origin/main
+   git push origin main
+   ```
+   (`lastRun` changes every run, so there is always a commit; that keeps the page's "Updated" time honest.)
+4. Verify: `git fetch origin main && git rev-parse HEAD origin/main` must print the same hash twice. If it doesn't, or any command above failed, retry the push once; if it still fails, put the failing command and its error text in the final message as `Public page NOT updated: <command>: <error>`. Never report success without this check.
+5. During a scheduled run, never change `index.html`, `export.py`, this file, or other repo files. Never commit anything from the database beyond what `export.py` writes.
 
 ## Rules
 
