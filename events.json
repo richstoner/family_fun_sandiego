@@ -1,6 +1,6 @@
 {
- "lastRun": "2026-10-30T21:05:57-07:00",
- "mode": "test publish",
+ "lastRun": "2026-11-01T20:02:43-08:00",
+ "mode": "weekly scan",
  "events": [
   {
    "title": "Bluey's Big Play",
@@ -8,7 +8,7 @@
    "urgency": "now",
    "start": "2026-11-13",
    "end": "2026-11-15",
-   "whenText": "Fri Nov 13 – Sun Nov 15",
+   "whenText": "Fri Nov 13 – Sun Nov 15 · Sat/Sun 1 PM matinees",
    "venue": "Balboa Theatre",
    "area": "Downtown",
    "fit": "The live puppet stage show with an original story by the Bluey creator. The Sat and Sun 1:00 PM matinees are the toddler-friendly picks; 6:00 PM shows run into bedtime.",
@@ -16,12 +16,30 @@
    "tags": [
     "Character",
     "Ticketed",
-    "Indoor",
-    "Matinee 1 PM"
+    "Indoor"
    ],
    "url": "https://www.sandiegotheatres.org/events/detail/blueys-big-play-2026",
    "source": "sandiegotheatres.org",
    "id": "bluey-big-play-2026-11",
+   "isNew": false
+  },
+  {
+   "title": "Bunny Train",
+   "category": "book_ahead",
+   "urgency": "watch",
+   "venue": "Pacific Southwest Railway Museum",
+   "area": "Campo (east county)",
+   "fit": "A spring vintage train ride with an Easter egg hunt; the 10:30 AM departure suits a toddler best.",
+   "caveat": "2027 dates not announced yet; it usually runs spring weekends before Easter. Online sales close 24 hours before departure.",
+   "tags": [
+    "Holiday",
+    "Ticketed",
+    "Long drive",
+    "Morning"
+   ],
+   "url": "https://psrm.org/?p=2335",
+   "source": "psrm.org",
+   "id": "bunny-train-2027",
    "isNew": true
   },
   {
@@ -41,7 +59,7 @@
    "url": "https://www.sandiego.org/events-festivals/carlsbad-fall-village-faire/93981a73606d11f1a7f2",
    "source": "sandiego.org",
    "id": "carlsbad-street-faire-2026-11",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "December Nights",
@@ -49,7 +67,7 @@
    "urgency": "plan",
    "start": "2026-12-04",
    "end": "2026-12-05",
-   "whenText": "Fri Dec 4 (4–10 PM) · Sat Dec 5 (noon–10 PM)",
+   "whenText": "Fri Dec 4 – Sat Dec 5 · 4 – 10 PM (Sat from noon)",
    "venue": "Balboa Park",
    "area": "Balboa Park",
    "fit": "San Diego's biggest holiday festival, free, with lights, music and free museum entry. Saturday afternoon is the toddler-friendly window before the evening crowds.",
@@ -63,7 +81,7 @@
    "url": "https://www.sandiego.gov/december-nights",
    "source": "sandiego.gov",
    "id": "december-nights-2026",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "Día de los Muertos Celebration",
@@ -75,12 +93,36 @@
    "fit": "A free morning cultural celebration in the arts district.",
    "tags": [
     "Art",
+    "Festival",
     "Free",
     "Morning"
    ],
    "url": "https://sandiego.kidsoutandabout.com/content/d%C3%ADa-de-los-muertos-celebration-free-event",
    "source": "kidsoutandabout.com",
    "id": "dia-de-los-muertos-liberty-2026",
+   "isNew": false
+  },
+  {
+   "title": "Disney On Ice: Jump In!",
+   "category": "book_ahead",
+   "urgency": "soon",
+   "start": "2027-01-21",
+   "end": "2027-01-24",
+   "whenText": "Thu Jan 21 – Sun Jan 24, 2027 · Sat/Sun 11 AM & 3 PM",
+   "venue": "Pechanga Arena",
+   "area": "Midway District",
+   "fit": "Frozen, Moana 2, Toy Story, Encanto and Mickey on ice. The Saturday or Sunday 11 AM show is the toddler pick; 3 PM may clash with nap.",
+   "onSale": "On sale since Oct 20 via the arena's ticketing (AXS). Seven shows; weekend mornings go first.",
+   "caveat": "Dates and showtimes come from a ticket-news report and AXS listing; confirm on pechangaarenasd.com.",
+   "tags": [
+    "Character",
+    "Ticketed",
+    "Indoor",
+    "Morning"
+   ],
+   "url": "https://www.ticketnews.com/2026/10/disney-on-ice-jump-in-san-diego-tickets-on-sale-at-pechanga-arena/",
+   "source": "ticketnews.com",
+   "id": "disney-on-ice-jump-in-2027-01",
    "isNew": true
   },
   {
@@ -93,12 +135,13 @@
    "fit": "A free family celebration of San Diego history at the city's oldest house.",
    "tags": [
     "History",
+    "Festival",
     "Free"
    ],
    "url": "https://sandiego.kidsoutandabout.com/content/annual-fall-back-festival-gaslamp-museum",
    "source": "kidsoutandabout.com",
    "id": "fall-back-festival-2026",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "Great Big Family Play Day",
@@ -112,74 +155,62 @@
    "onSale": "Timed-entry tickets on Eventbrite. No refunds. The stage schedule is posted at greatbigfamilyplayday.com.",
    "tags": [
     "Concert",
+    "Festival",
     "Ticketed",
     "Outdoor",
-    "Free parking"
+    "Timed entry"
    ],
    "url": "https://www.eventbrite.com/e/2026-great-big-family-play-day-san-diego-presented-by-tonies-tickets-1993572199113",
    "source": "eventbrite.com",
    "id": "great-big-family-play-day-2026",
-   "isNew": true
-  },
-  {
-   "title": "Halloween in the Village",
-   "category": "soon",
-   "start": "2026-10-31",
-   "whenText": "Sat Oct 31 · 2 – 6 PM",
-   "venue": "Carlsbad Village",
-   "area": "Carlsbad",
-   "fit": "Activities across the Village all afternoon, costumes encouraged. The costume contest's youngest group is ages 4–12, so a 3-year-old enters with the family category.",
-   "tags": [
-    "Halloween",
-    "Free",
-    "Outdoor"
-   ],
-   "url": "https://visitcarlsbad.com/events/halloween-in-the-village-4/",
-   "source": "visitcarlsbad.com",
-   "id": "halloween-carlsbad-village-2026",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "Jungle Bells at the San Diego Zoo",
    "category": "book_ahead",
-   "urgency": "watch",
-   "start": "2026-12-18",
+   "urgency": "plan",
+   "start": "2026-12-19",
    "end": "2027-01-03",
-   "whenText": "Dec 18 – Jan 3 (not Dec 24)",
+   "whenText": "Dec 19 – Jan 3 (not Dec 24) · 5 – 8 PM",
    "venue": "San Diego Zoo",
    "area": "Balboa Park",
    "fit": "Holiday light trails and shows from about 5 to 8 PM, included with zoo admission. Arrive mid-afternoon to see animals first.",
-   "caveat": "Dates are from a local guide and marked subject to change; the zoo hasn't published its full 2026 schedule.",
+   "onSale": "Included with any zoo admission or membership; no separate ticket.",
+   "caveat": "The zoo now lists Dec 19 – Jan 3, with a members-only preview Dec 18. Weekend and post-Christmas nights get crowded.",
    "tags": [
     "Holiday",
     "Animals",
-    "Admission"
+    "Admission",
+    "Evening",
+    "Crowds"
    ],
-   "url": "https://lajollamom.com/san-diego-zoo-jungle-bells/",
-   "source": "lajollamom.com",
+   "url": "https://zoo.sandiegozoo.org/jungle-bells",
+   "source": "sandiegozoo.org",
    "id": "jungle-bells-2026",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "Holidays at LEGOLAND",
    "category": "book_ahead",
-   "urgency": "watch",
+   "urgency": "plan",
    "start": "2026-11-21",
    "end": "2027-01-03",
    "whenText": "Select dates, Nov 21 – Jan 3",
    "venue": "LEGOLAND California",
    "area": "Carlsbad",
    "fit": "Holiday shows, a 30-foot LEGO tree, snowfall and meet-and-greets, all included with admission. The park is built for ages 2–12.",
-   "caveat": "Event-day list (Nov 21–29, Dec 5–6, 12–13, 19–31, Jan 1–3) comes from a ticket-reseller guide; confirm on legoland.com.",
+   "onSale": "Included with LEGOLAND tickets and select passes. Kids' New Year's Eve (Dec 31) is also included.",
+   "caveat": "legoland.com lists only 'select dates' Nov 21 – Jan 3; the day-by-day list (Nov 21–29, Dec 5–6, 12–13, 19–31, Jan 1–3) comes from a third-party guide, so check the park calendar.",
    "tags": [
     "Holiday",
     "Admission",
-    "Outdoor"
+    "Outdoor",
+    "Crowds"
    ],
-   "url": "https://www.sandiego.org/events-festivals/holidays-at-legoland/61546f8bc0f311f1a7f2",
-   "source": "sandiego.org",
+   "url": "https://www.legoland.com/california/things-to-do/seasonal-events/",
+   "source": "legoland.com",
    "id": "legoland-holidays-2026",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "Liberty Station Tree Lighting",
@@ -199,26 +230,31 @@
    "url": "https://www.sandiego.org/events-festivals/holiday-tree-lighting-at-liberty-station/4ba146aebf5611f0b563",
    "source": "sandiego.org",
    "id": "liberty-station-tree-lighting-2026",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "Lightscape at San Diego Botanic Garden",
    "category": "book_ahead",
-   "urgency": "watch",
+   "urgency": "now",
+   "start": "2026-11-20",
+   "end": "2027-01-03",
+   "whenText": "Nov 20 – Jan 3 · from 5 PM",
    "venue": "San Diego Botanic Garden",
    "area": "Encinitas",
    "fit": "An illuminated after-dark garden trail sold in 15-minute timed slots; ages 2 and under were free last season.",
-   "caveat": "2026 dates not announced yet. A waitlist on Fever gives presale access.",
+   "onSale": "On sale now (sdbg.org / lightscapeus.com). From $28 adults, $18 kids; 2 and under free. Prices vary by night.",
+   "caveat": "Dates sell out quickly. Book the earliest 5 PM slot so a toddler isn't out too late.",
    "tags": [
     "Holiday",
     "Ticketed",
     "Timed entry",
-    "Evening"
+    "Evening",
+    "Outdoor"
    ],
    "url": "https://sdbg.org/lightscape/",
    "source": "sdbg.org",
    "id": "lightscape-sdbg-2026",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "Little Italy Tree Lighting & Christmas Village",
@@ -238,7 +274,7 @@
    "url": "https://www.sandiego.org/events-festivals/little-italy-tree-lighting-and-christmas-village/59de7b66c10411f1a7f2",
    "source": "sandiego.org",
    "id": "little-italy-tree-lighting-2026",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "MCASD Free Second Sunday & Family Play Day",
@@ -257,7 +293,7 @@
    "url": "https://mcasd.org/events",
    "source": "mcasd.org",
    "id": "mcasd-play-day-2026-11",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "North Pole Limited train",
@@ -265,7 +301,7 @@
    "urgency": "now",
    "start": "2026-11-27",
    "end": "2026-12-20",
-   "whenText": "Fri–Sun, Nov 27 – Dec 20",
+   "whenText": "Fri–Sun, Nov 27 – Dec 20 · Sun 3 PM; Fri/Sat 5 & 7 PM",
    "venue": "Pacific Southwest Railway Museum",
    "area": "Campo (east county)",
    "fit": "A 90-minute vintage train ride with hot chocolate, cookies, carols, and Santa and Mrs. Claus visiting every seat. The Sunday 3 PM departure suits a toddler best; Fri/Sat trains leave at 5 and 7 PM.",
@@ -273,12 +309,58 @@
    "tags": [
     "Holiday",
     "Ticketed",
-    "Santa",
-    "Long drive"
+    "Long drive",
+    "Evening"
    ],
    "url": "https://psrm.org/npl/",
    "source": "psrm.org",
    "id": "north-pole-limited-2026",
+   "isNew": false
+  },
+  {
+   "title": "The Nutcracker – sensory-friendly matinees",
+   "category": "book_ahead",
+   "urgency": "soon",
+   "start": "2026-12-19",
+   "end": "2026-12-23",
+   "whenText": "Sat Dec 19 · 2 PM; Tue Dec 22 & Wed Dec 23 · 1 PM",
+   "venue": "San Diego Civic Theatre",
+   "area": "Downtown",
+   "fit": "Golden State Ballet's family- and sensory-friendly matinees use quieter recorded music and a relaxed room. Recommended for ages 3+, but it runs 2 hr 10 min and the 1–2 PM starts overlap nap.",
+   "onSale": "Reduced-price tickets for these three shows via Golden State Ballet, Ticketmaster or the Civic box office.",
+   "caveat": "Long for a 3-year-old; plan to leave at intermission if needed.",
+   "tags": [
+    "Theater",
+    "Holiday",
+    "Ticketed",
+    "Indoor"
+   ],
+   "url": "https://www.goldenstateballet.org/nutcracker",
+   "source": "goldenstateballet.org",
+   "id": "nutcracker-golden-state-ballet-2026-12",
+   "isNew": true
+  },
+  {
+   "title": "SeaWorld Christmas Celebration",
+   "category": "book_ahead",
+   "urgency": "plan",
+   "start": "2026-11-13",
+   "end": "2027-01-03",
+   "whenText": "Daily Nov 13 – Jan 3 · 10 AM – 5 PM",
+   "venue": "SeaWorld San Diego",
+   "area": "Mission Bay",
+   "fit": "New Baby Shark's Christmas Adventure show, North Pole Storytime, Santa photos and live reindeer, all part of a normal park day. Go in the morning.",
+   "onSale": "Included with park admission; some extras such as Dine with Orcas and Santa cost more.",
+   "caveat": "Dates from a KPBS listing; check seaworld.com for daily show times.",
+   "tags": [
+    "Holiday",
+    "Animals",
+    "Admission",
+    "Outdoor"
+   ],
+   "url": "https://www.kpbs.org/events/ongoing/seaworld-san-diegos-christmas-celebration-returns-with-all-new-shows-and-timeless-holiday-joy",
+   "source": "kpbs.org",
+   "id": "seaworld-christmas-celebration-2026",
    "isNew": true
   },
   {
@@ -294,12 +376,13 @@
    "tags": [
     "Character",
     "Ticketed",
-    "Indoor"
+    "Indoor",
+    "Long drive"
    ],
    "url": "https://www.kpbs.org/events/2027/02/20/sesame-street-live-elmos-got-the-moves",
    "source": "kpbs.org",
    "id": "sesame-street-live-escondido-2027",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "Symphony Kids: Meet the Brass – March of the Toys",
@@ -313,51 +396,82 @@
    "onSale": "General admission. Every age needs a ticket, including babies. Check single-ticket availability; a 4-concert package is also sold.",
    "tags": [
     "Concert",
-    "Science of sound",
+    "Ticketed",
     "Indoor",
-    "30 min"
+    "Morning",
+    "Short (≤45 min)"
    ],
    "url": "https://www.sandiegosymphony.org/tickets-events/concerts-for-families/",
    "source": "sandiegosymphony.org",
    "id": "symphony-kids-brass-2026-12",
-   "isNew": true
+   "isNew": false
   },
   {
    "title": "Symphony Kids: Meet the Percussion – One, Two, Buckle My Shoe",
    "category": "book_ahead",
-   "urgency": "plan",
+   "urgency": "soon",
    "start": "2027-02-13",
    "whenText": "Sat Feb 13, 2027 · 10:00 or 11:30 AM",
    "venue": "Jacobs Music Center",
    "area": "Downtown",
    "fit": "A 30-minute drums-and-shakers concert for ages 0–5, sensory-friendly.",
+   "onSale": "Single tickets sold at sandiegosymphony.org; everyone needs a ticket, including babies. A 4-concert Symphony Kids package is $48.",
    "tags": [
     "Concert",
+    "Ticketed",
     "Indoor",
-    "30 min"
+    "Morning",
+    "Short (≤45 min)"
    ],
    "url": "https://www.sandiegosymphony.org/tickets-events/concerts-for-families/",
    "source": "sandiegosymphony.org",
    "id": "symphony-kids-percussion-2027-02",
+   "isNew": false
+  },
+  {
+   "title": "Symphony Kids: Meet the Winds – Peter and the Wolf",
+   "category": "book_ahead",
+   "urgency": "soon",
+   "start": "2027-04-03",
+   "whenText": "Sat Apr 3, 2027 · 10:00 or 11:30 AM",
+   "venue": "Jacobs Music Center",
+   "area": "Downtown",
+   "fit": "A 30-minute San Diego Symphony concert built for ages 0–5, telling Peter and the Wolf with the woodwinds.",
+   "onSale": "Tickets at sandiegosymphony.org; everyone needs a ticket, including babies.",
+   "tags": [
+    "Concert",
+    "Ticketed",
+    "Indoor",
+    "Morning",
+    "Short (≤45 min)"
+   ],
+   "url": "https://www.sandiegosymphony.org/performances/meet-the-winds-peter/",
+   "source": "sandiegosymphony.org",
+   "id": "symphony-kids-winds-2027-04",
    "isNew": true
   },
   {
-   "title": "Trick or Treat Symphony",
-   "category": "soon",
-   "start": "2026-10-31",
-   "whenText": "Sat Oct 31 · 11:00 AM",
-   "venue": "Jacobs Music Center",
-   "area": "Downtown",
-   "fit": "A one-hour, not-too-spooky Halloween orchestra concert with crafts an hour before. The series is aimed at ages 6–12, so it may be long for a 3-year-old.",
+   "title": "Wild Holidays at the Safari Park",
+   "category": "book_ahead",
+   "urgency": "plan",
+   "start": "2026-11-28",
+   "end": "2027-01-03",
+   "whenText": "Select nights Nov 28 – Jan 3 · until 8 PM",
+   "venue": "San Diego Zoo Safari Park",
+   "area": "Escondido",
+   "fit": "Holiday lights and entertainment after dark, included with admission. Arrive mid-afternoon to see animals before habitats close.",
+   "onSale": "Included with Safari Park admission or membership.",
+   "caveat": "Only Nov 28–29, Dec 18–23 and Dec 26 – Jan 3 (member preview Nov 27). Many habitats and the Africa Tram close before dark.",
    "tags": [
-    "Concert",
-    "Halloween",
-    "Ticketed",
-    "Indoor"
+    "Holiday",
+    "Animals",
+    "Admission",
+    "Evening",
+    "Long drive"
    ],
-   "url": "https://www.sandiegosymphony.org/performances/trick-or-treat-symphony-fam/",
-   "source": "sandiegosymphony.org",
-   "id": "trick-or-treat-symphony-2026",
+   "url": "https://www.sdzsafaripark.org/wild-holidays",
+   "source": "sdzsafaripark.org",
+   "id": "wild-holidays-safari-park-2026",
    "isNew": true
   }
  ]
